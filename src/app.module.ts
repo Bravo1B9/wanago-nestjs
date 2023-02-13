@@ -4,6 +4,7 @@ import * as Joi from '@hapi/joi';
 import { DatabaseModule } from './database/database.module';
 import { PostsModule } from './posts/posts.module';
 import { UsersModule } from './users/users.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UsersModule } from './users/users.module';
         PORT: Joi.number(),
       })
     }),
+    AuthenticationModule,
     DatabaseModule,
     PostsModule,
     UsersModule,
