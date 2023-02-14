@@ -2,7 +2,6 @@ import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import CreateUserDto from "./dto/createUser.dto";
-import FindByEmail from "./dto/findByEmail.dto";
 import User from "./user.entity";
 
 @Injectable()
@@ -18,10 +17,10 @@ export class UsersService {
     return newUser;
   }
 
-  async getUserByEmail(dto: FindByEmail) {
+  async getUserByEmail(email: string) {
     const user = await this.usersRepository.findOne({
       where: {
-        email: dto.email
+        email
       }
     });
     if(user) {
